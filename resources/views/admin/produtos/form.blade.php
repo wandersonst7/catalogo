@@ -51,6 +51,23 @@
             @enderror
         </div>
 
+        <div class="mb-2">
+            <select id="categoria_id" name="categoria_id" class="form-control @error('categoria_id') is-invalid @enderror">
+                <option disabled selected>--Selecione uma opcao--</option>
+                @foreach ($categorias as $categoria)
+                    @if($produto->categoria_id == $categoria->id)
+                        <option selected value="{{$categoria->id}}">{{ $categoria->nome }}</option>
+                    @else
+                        <option value="{{$categoria->id}}">{{ $categoria->nome }}</option>
+                    @endif
+                    
+                @endforeach
+            </select>
+            @error('categoria_id')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
         <div class="row mb-3">
             <label for="imagem" class="col-md-4 col-form-label text-md-end">{{ __('imagem') }}</label>
     

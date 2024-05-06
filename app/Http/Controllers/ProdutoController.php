@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUpdateProdutoRequest;
 use App\Models\Produto;
+use App\Models\Categoria;
 
 class ProdutoController extends Controller
 {
@@ -43,9 +44,10 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create(Categoria $categoria){
         return view('admin.produtos.form', [
-            'produto' => new Produto()
+            'produto' => new Produto(),
+            'categorias' => $categoria->all()
         ]);
     }
 
@@ -55,7 +57,7 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index');
     }
 
-    public function edit(int $id, Produto $produto){
+    public function edit(int $id, Produto $produto, Categoria $categoria){
         $produto = $produto->where('id', '=', $id)->first();
 
         if(!$produto){
@@ -63,7 +65,8 @@ class ProdutoController extends Controller
         }
 
         return view('admin.produtos.form', [
-            'produto' => $produto
+            'produto' => $produto,
+            'categorias' => $categoria->all()
         ]);
     }
     

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{FuncionarioController};
+use App\Http\Controllers\Admin\{CategoriaController, FuncionarioController};
 use App\Http\Controllers\{ProdutoController};
 
 // ORDEM D.U.E.C.S.I
@@ -14,6 +14,21 @@ use App\Http\Controllers\{ProdutoController};
 
 // Admin
 Route::group(['middleware' => ['auth', 'permission:admin']], function () {
+
+    // CATEGORIAS
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+
+    Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
+
+    Route::get('/categorias/{id}/editar', [CategoriaController::class, 'edit'])->name('categorias.edit');
+
+    Route::get('/categorias/cadastrar', [CategoriaController::class, 'create'])->name('categorias.create');
+
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
+    
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+
+
     // FUNCIONÁRIOS
     Route::delete('/funcionarios/{id}', [FuncionarioController::class, 'destroy'])->name("funcionarios.destroy");
 

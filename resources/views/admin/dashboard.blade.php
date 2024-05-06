@@ -13,13 +13,10 @@
     <div class="d-flex column-gap-2">
         @can('admin')
             <a class="btn btn-success" href="{{ route('funcionarios.index') }}">Funcionários</a>
+            <a class="btn btn-primary" href="{{ route('categorias.index') }}">Categorias</a>
         @endcan
         <a class="btn btn-warning" href="{{ route('produtos.index') }}">Produtos</a>
     </div>
-
-    @guest
-        <a class="my-5 btn btn-sm btn-outline-success" href="{{ route('login') }}">Login</a>  
-    @endguest
     
     @auth
         <form action="{{ route('logout') }}" method="POST">

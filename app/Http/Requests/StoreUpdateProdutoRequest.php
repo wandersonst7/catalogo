@@ -40,6 +40,9 @@ class StoreUpdateProdutoRequest extends FormRequest
             ],
             'quantidade'=> [
                 'required',
+            ],
+            'categoria_id' => [
+                'required'
             ]
         ];
 
@@ -75,7 +78,9 @@ class StoreUpdateProdutoRequest extends FormRequest
                 'required' => 'A imagem do produto é obrigatória.',
                 'mimes' => 'Só são permitidosa os formatos: (jpg, jpeg, png, bmp, svg, webp)'
             ],
-
+            'categoria_id' => [
+                'required' => 'A categoria é obrigatória.'
+            ]
         ];
     }
 
