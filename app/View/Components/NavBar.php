@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Categoria;
 
 class NavBar extends Component
 {
@@ -22,6 +23,11 @@ class NavBar extends Component
     public function render(): View|Closure|string
     {
         $username = $this->username;
-        return view('components.nav-bar', ['username' => $username]);
+        $categorias = Categoria::all();
+        
+        return view('components.nav-bar', [
+            'username' => $username, 
+            'categorias' => $categorias,
+        ]);
     }
 }

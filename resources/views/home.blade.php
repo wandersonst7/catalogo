@@ -4,44 +4,40 @@
 
 @section('content')
 
-@auth
-    <x-nav-bar :username="Auth::user()->username"></x-nav-bar>
-@endauth
-
-@guest
-    <div class="px-5 py-2 d-flex w-100 justify-content-end">
-        <a class="btn btn-warning" href="{{ route('login') }}">Login</a>
-    </div>
-@endguest
-
-<main class="p-5">
-    <h1 class="mb-3">Todos os Produtos</h1>
+<main class="p-5 container">
     
     @if($busca)
-        <h4>Buscando por: {{ $busca }}</h4>
+        <h3>Buscando por: {{ $busca }}</h3>
+    @else
+        <h3>Todos os Produtos</h3>
     @endif
 
-    <table class="table table-striped table-hover table-bordered">
-        <thead class="table-dark">
-            <th>Nome</th>
-            <th>Preco</th>
-            <th>Quantidade</th>
-        </thead>
-        <tbody>
-            @foreach($produtos as $produto)
-            <tr>
-                <td>{{ $produto->nome }}</td>
-                <td>{{ $produto->preco }}</td>
-                <td>{{ $produto->quantidade }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="py-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        @foreach($produtos as $produto)
+            <div class="col">
+              <div class="card shadow-sm">
+                <img class="img-card" src="{{ asset($produto->imagem) }}" alt="{{ $produto->nome }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{ $produto->nome }}</h5>
+                  <p class="card-text">{{ $produto->descricao }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-success">Visualizar</button>
+                    </div>
+                    <p class="text-success fw-bold">R$ {{ $produto->preco }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        @endforeach
+        
+        </div>
+    </div>    
 
     {{ $produtos->links() }}
     
-</main>
-
 </main>
 
 @endsection

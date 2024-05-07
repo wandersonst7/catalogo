@@ -8,8 +8,6 @@
 
 @section('content')
 
-<x-nav-bar :username="Auth::user()->username"></x-nav-bar>
-
 <main class="w-50 p-5">
    
     <h1>Formulário de Categoria</h1>

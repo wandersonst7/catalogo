@@ -4,8 +4,6 @@
 
 @section('content')
 
-<x-nav-bar :username="Auth::user()->username"></x-nav-bar>
-
 <main class="p-5">
     <h1 class="mb-3">Página de Funcionários</h1>
 

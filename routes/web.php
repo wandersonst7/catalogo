@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{CategoriaController, FuncionarioController};
-use App\Http\Controllers\{ProdutoController};
+use App\Http\Controllers\{HomeController, ProdutoController};
 
 // ORDEM D.U.E.C.S.I
 # destroy
@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth','permission:admin|func']], function () {
 
 });
 
-Route::get('/', [ProdutoController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/categoria/{categoria:nome}',[HomeController::class, 'categoria'])->name('categoria.show');
+
 
 require __DIR__.'/auth.php';

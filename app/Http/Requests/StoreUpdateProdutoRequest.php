@@ -36,7 +36,7 @@ class StoreUpdateProdutoRequest extends FormRequest
             ],
             'imagem' => [
                 'required',
-                'mimes:jpg, jpeg, png, bmp, svg, webp'
+                'mimes:jpg,jpeg,png,bmp,svg,webp'
             ],
             'quantidade'=> [
                 'required',

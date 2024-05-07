@@ -10,24 +10,7 @@ use App\Models\Categoria;
 
 class ProdutoController extends Controller
 {
-    // 
-    public function home(Request $request, Produto $produto){
-        $produtos = null;
-        $busca = $request->busca;
-
-        if($busca){
-            $produtos = $produto->where('nome', 'like', "%{$busca}%")->paginate(2)->withQueryString();
-        }else{
-            $produtos = $produto->paginate(2);
-        }
-
-        return view('home', [
-            'produtos' => $produtos,
-            'busca' => $busca
-        ]);
-    }
-    
-
+    //
     public function index(Request $request, Produto $produto){
         $produtos = null;
         $busca = $request->busca;

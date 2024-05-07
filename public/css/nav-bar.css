@@ -1,0 +1,20 @@
+.nav-categorias{
+    color: #111;
+    background-color: #f8f8f8;
+}
+
+.nav-categorias > div {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.nav-categorias ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
