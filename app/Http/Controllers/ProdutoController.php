@@ -77,6 +77,21 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index');
     }
 
+    public function show(int $id, Produto $produto, Categoria $categoria){
+        $produto = $produto->where('id', '=', $id)->first();
+
+        if(!$produto){
+            return back();
+        }
+
+        $categoriaProduto = $categoria->where('id', '=', $produto->categoria_id)->first();
+
+        return view('produto', [
+            'produto' => $produto,
+            'categoria' => $categoriaProduto
+        ]);
+    }
+
     private function armazenaImagem(Request $request){
         $data = $request->all();
         if ($request->file('imagem') != null){

@@ -67,6 +67,6 @@ Route::group(['middleware' => ['auth','permission:admin|func']], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/categoria/{categoria:nome}',[HomeController::class, 'categoria'])->name('categoria.show');
-
+Route::get('/produtos/{id}/visualizar', [ProdutoController::class, 'show'])->name('produtos.show');
 
 require __DIR__.'/auth.php';

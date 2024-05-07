@@ -24,7 +24,7 @@
                   <p class="card-text">{{ $produto->descricao }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-success">Visualizar</button>
+                      <a href="{{ route('produtos.show', $produto->id) }}" class="btn btn-sm btn-outline-success">Visualizar</a>
                     </div>
                     <p class="text-success fw-bold">R$ {{ $produto->preco }}</p>
                   </div>
