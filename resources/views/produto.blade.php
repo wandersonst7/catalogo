@@ -14,8 +14,13 @@
             <p>Estoque: {{ $produto->quantidade }}</p>
             <h4>Preço: <span class="text-success">R$ {{ $produto->preco }}</span></h4>
             <div class="d-flex column-gap-2">
-                <a class="btn btn-warning" href="#">Adicionar ao carrinho</a>
-                <a class="btn btn-outline-success" target="_BLANK" href="https://wa.me/558494580627?text=Estou%20interessado(a)%20no%20(s)%20seguinte%20(s)%20item(s):%0A%0A{{ urlencode($produto->nome) }}">Finalizar no Whatsapp</a>
+                @if($produto->quantidade == 0)
+                    <a class="btn btn-danger">Produto Indisponível</a>
+                @else
+                    <a class="btn btn-warning" href="#">Adicionar ao carrinho</a>
+                    <a class="btn btn-outline-success" target="_BLANK" href="https://wa.me/558494580627?text=Estou%20interessado(a)%20no%20(s)%20seguinte%20(s)%20item(s):%0A%0A{{ urlencode($produto->nome) }}">Finalizar no Whatsapp</a>
+                @endif
+
             </div>
         </div>
     </div> 
