@@ -17,18 +17,15 @@ class FuncionarioController extends Controller
 
         // Realizando busca
         if($request->busca){
-            // $funcionarios = $user->where([
-            //     ['username', 'like', '%'.$request->busca.'%']
-            // ])->get()->filter(function($user) {
-            //     return $user->hasPermissionTo('func');
-            // });
+            $funcionarios = $user->where('username', 'like', '%'.$request->busca.'%')
+            ->whereHas('permissions', function ($query) {
+                $query->where('name', 'func');
+            })->paginate(2)->withQueryString();
 
         }else{
-            // $funcionarios = $user->all()->filter(function($user) {
-            //     return $user->hasPermissionTo('func');
-            // })->paginate(2);
-
-            $funcionarios = $user->query()->paginate(2);
+            $funcionarios = $user->whereHas('permissions', function ($query) {
+                $query->where('name', 'func');
+            })->paginate(2);
         }
 
         return view('admin.funcionarios.index', [
